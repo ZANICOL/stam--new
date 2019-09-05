@@ -1,0 +1,41 @@
+<h1>
+	{{dvdName}}
+</h1>
+<img src = {{dvdPicUrl}} width = "300" height  = "200">
+<p>
+
+  Filter by: <input type = 'text' [(ngModel)] = 'dvdFilter' />
+</p>
+<hr/>
+<h3> Filtered by: {{dvdFilter}} </h3>
+
+<hr/>
+
+<table *ngIf= 'songsAry && songsAry.length'>
+  <thead>
+    <tr>
+      <th>
+        <button class = 'btn btn-success' (click) = "toggleImage()">
+          {{showImage ? 'hide' : 'show'}} Image
+        </button>
+      </th>
+      <th>Song Name</th>
+      <th>serialNo</th>
+      <th>length</th>
+    </tr>
+  </thead>
+<tbody>
+
+  <tr *ngFor='let song of filteredSongs'>
+    <td>
+      <img *ngIf='showImage' src= '{{song.pic}}' width = "100" height = "80">
+    </td>
+    <td> {{song.name}} </td>
+    <td> {{song.serialNo}}  </td>
+    <td> {{song.length}} </td>
+    </tr>
+
+</tbody>
+  
+
+</table>
